@@ -1,0 +1,145 @@
+﻿<Page
+    x:Class="ShowBoat.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShowBoat"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <!--================     Main Grid     ================-->
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="Assets/Images/movieBackground.png">
+            </ImageBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--=====   Search Bar   =====-->
+        <TextBox x:ConnectionId='1' x:Name="txtSearch" Height="30" Width="300" Grid.Row="1" FontSize="16"
+                                        PlaceholderText="Search Movie By Title....."
+                 Margin="0,5,0,5"/>
+        <!--=====   List View Of Movie Results (Opens when you Type)   =====-->
+        <ScrollViewer Grid.Row="3" Canvas.ZIndex="2"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden">
+            <ListView x:ConnectionId='25' Background="#101216" BorderThickness="2" x:Name="spMainMovieResults"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Top" BorderBrush="#6e7a8c"
+                                                    >
+            </ListView>
+        </ScrollViewer>
+        <!--================     Where Movie Clicked is Displayed (Opens On Click)    ================-->
+        <ScrollViewer x:ConnectionId='2' Grid.Row="2" x:Name="theMovieDisplay" Visibility="Collapsed"
+                      VerticalScrollBarVisibility="Hidden" Margin="0,0,0,80">
+            <StackPanel x:ConnectionId='7' Background="#99cce6ff" x:Name="movieDisplay">
+                <Image x:ConnectionId='8' Height="40" Width="250"                         
+                        x:Name="btnRating" Source="Assets/Images/btnAddMovie.png"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                </Image>
+                <Rectangle Height="1" Fill="#CCC" HorizontalAlignment="Stretch"/>
+                <!--=====   Rating Menu (Opens When you click Add Movie)   =====-->
+                <StackPanel x:ConnectionId='9' Orientation="Vertical" x:Name="spRateMovie" HorizontalAlignment="Stretch"
+                            Background="Azure" BorderBrush="#444" BorderThickness="2"
+                            Height="300" Visibility="Collapsed" Margin="10">
+
+                    <TextBlock Text="Slide To Rate Movie" TextAlignment="Center" Foreground="#333"
+                               FontWeight="SemiBold" Margin="0,5,0,5"/>
+                    <Border Margin="60,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Assets/Images/SBShipwreckedIcon.png" Height="30" Width="30"
+                               HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="0"/>
+                            <Image Source="Assets/Images/SBSmoothSailingIcon.png" Height="30" Width="30"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1"/>
+                            <Image Source="Assets/Images/SBTreasureIcon.png" Height="30" Width="30"
+                               HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Column="2"/>
+                        </Grid>
+                    </Border>
+                    <Slider x:ConnectionId='20' TickPlacement="BottomRight" Maximum="2" TickFrequency="1" Margin="60,0"
+                            x:Name="sliderRating"                                />
+                    <TextBlock x:ConnectionId='21' x:Name="txtRatingChose" Text="ShipWreck" FontSize="13"
+                               TextAlignment="Center" FontWeight="Bold"/>
+                    <TextBox x:ConnectionId='22' Height="60" HorizontalAlignment="Stretch" Margin="10" x:Name="userNotes"
+                             PlaceholderText="Your Notes On The Movie"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <CheckBox x:ConnectionId='24' x:Name="checkBoxOwned" Content="I Own This"/>
+                    </StackPanel>
+                    <!--================     Button To Add Movie & Navigates You To MyList     ================-->
+                    <Image x:ConnectionId='23' x:Name="btnSubmitMovie"                   Height="30" Width="70"
+                            HorizontalAlignment="Center" Margin="5" Source="Assets/Images/btnPlus.png">
+                    </Image>
+                </StackPanel>
+                <Rectangle Height="4" Fill="#6e7a8c" HorizontalAlignment="Stretch"/>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:ConnectionId='13' x:Name="moviePoster" Height="260" HorizontalAlignment="Left" Margin="20,20,0,20"/>
+                    <Rectangle Fill="#6e7a8c" Height="200" VerticalAlignment="Center" Width="3" Margin="20"/>
+                    <StackPanel  Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:ConnectionId='18' x:Name="imgCast0" Height="70"/>
+                            <TextBlock x:ConnectionId='19' x:Name="txtCast0" VerticalAlignment="Center" Margin="5,0,0,0"
+                                       FontSize="18" FontWeight="Bold" Foreground="#333"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0,20">
+                            <Image x:ConnectionId='16' x:Name="imgCast1" Height="70"/>
+                            <TextBlock x:ConnectionId='17' x:Name="txtCast1" VerticalAlignment="Center" Margin="5,0,0,0"
+                                       FontSize="18" FontWeight="Bold" Foreground="#333"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:ConnectionId='14' x:Name="imgCast2" Height="70"/>
+                            <TextBlock x:ConnectionId='15' x:Name="txtCast2" VerticalAlignment="Center" Margin="5,0,0,0"
+                                       FontSize="18" FontWeight="Bold" Foreground="#333"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Rectangle Height="4" Fill="#6e7a8c" HorizontalAlignment="Stretch"/>
+                <TextBlock x:ConnectionId='10' x:Name="txtMovieTitle" Text="The Matrix (1999)" FontSize="20" TextAlignment="Center"
+                           Margin="0,10" FontWeight="Bold" Foreground="#333"/>
+
+                <Rectangle Height="4" Fill="#6e7a8c" HorizontalAlignment="Stretch"/>
+                <WebView x:ConnectionId='11' Height="240" x:Name="trailer" Margin="0,10,0,10"/>
+                <Rectangle Height="4" Fill="#6e7a8c" HorizontalAlignment="Stretch"/>
+                <TextBlock x:ConnectionId='12' x:Name="txtTheMovieOverview" HorizontalAlignment="Stretch"
+                           TextWrapping="Wrap" FontSize="13" FontWeight="SemiBold"
+                           Foreground="#333" Margin="20"/>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <!--=====     Easy Navigation Menu     =====-->
+        <Border Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Canvas.ZIndex="90"
+                Height="80" Background="#22324c" BorderBrush="#b0b8c4" BorderThickness="0,2,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0" BorderBrush="#b0b8c4" BorderThickness="2,0,2,2">
+                    <Image x:ConnectionId='6' HorizontalAlignment="Stretch" x:Name="btnNavHome"                           
+                           VerticalAlignment="Stretch" Margin="20" Source="Assets/Images/tabHomeNotSelected.png"/>
+                </Border>
+                <Border Grid.Column="1" BorderBrush="#b0b8c4" BorderThickness="2,0,2,2">
+                    <Image x:ConnectionId='5' HorizontalAlignment="Stretch" x:Name="btnNavSearch"
+                           VerticalAlignment="Stretch" Margin="13" Source="Assets/Images/tabSearchSelected.png"/>
+                </Border>
+                <Border Grid.Column="2" BorderBrush="#b0b8c4" BorderThickness="2,0,2,2">
+                    <Image x:ConnectionId='4' HorizontalAlignment="Stretch" x:Name="btnNavList"                           
+                           VerticalAlignment="Stretch" Margin="20" Source="Assets/Images/tabMyListNotSelected.png"/>
+                </Border>
+                <Border Grid.Column="3" BorderBrush="#b0b8c4" BorderThickness="2,0,2,2">
+                    <Image x:ConnectionId='3' HorizontalAlignment="Stretch" x:Name="btnNavTrivia"                           
+                           VerticalAlignment="Stretch" Margin="20" Source="Assets/Images/tabTriviaNotSelected.png"/>
+                </Border>
+            </Grid>
+        </Border>
+
+    </Grid>
+
+</Page>
+
